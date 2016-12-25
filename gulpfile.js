@@ -55,7 +55,7 @@ gulp.task('build', function(cb) {
 });
 
 gulp.task('watch', ['build'], function() {
-  var reload = browserSync.reload();
+  var reload = browserSync.reload;
   gulp.watch('app/scss/**/*.scss', ['sass'], reload);
   gulp.watch('app/*.html', reload);
   gulp.watch('app/js/**/*.js', reload);
