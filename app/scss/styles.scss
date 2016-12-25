@@ -1,1 +1,65 @@
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+$primary-text: #333333;
+
+// overrides
+//
+
+@media (min-width: 1200px) {
+  .container {
+    width: 970px;
+  }
+}
+
+a {
+  color: $primary-text;
+
+  &:hover {
+    color: $primary-text;
+  }
+}
+
+//
+//
+
+.nav-bar {
+  height: 90px;
+
+  .nav-item {
+    background: gray;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin-top: 30px;
+  }
+
+  .profile-pic {
+    width: 60px;
+    height: 60px;
+    margin-top: 15px;
+  }
+}
+
+.about {
+  margin-top: 45px;
+  text-align: center;
+  cursor: default;
+
+  .text-link {
+    font-weight: bold;
+  }
+
+  #startup-shell:hover {
+    color: red;
+  }
+  #passenger:hover {
+    color: green;
+  }  
+  #slide:hover {
+    color: gray;
+  }  
+  #make-school:hover {
+    color: blue;
+  }
+
+}

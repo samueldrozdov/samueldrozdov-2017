@@ -5813,3 +5813,40 @@ button.close {
 @media print {
   .hidden-print {
     display: none !important; } }
+
+@media (min-width: 1200px) {
+  .container {
+    width: 970px; } }
+
+a {
+  color: #333333; }
+  a:hover {
+    color: #333333; }
+
+.nav-bar {
+  height: 90px; }
+  .nav-bar .nav-item {
+    background: gray;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin-top: 30px; }
+  .nav-bar .profile-pic {
+    width: 60px;
+    height: 60px;
+    margin-top: 15px; }
+
+.about {
+  margin-top: 45px;
+  text-align: center;
+  cursor: default; }
+  .about .text-link {
+    font-weight: bold; }
+  .about #startup-shell:hover {
+    color: red; }
+  .about #passenger:hover {
+    color: green; }
+  .about #slide:hover {
+    color: gray; }
+  .about #make-school:hover {
+    color: blue; }

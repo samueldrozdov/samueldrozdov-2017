@@ -37,6 +37,7 @@ gulp.task('fonts', function() {
 });
 
 // Clean Tasks
+//
 
 gulp.task('clean:dist', function() {
   return del.sync('dist')
@@ -54,17 +55,17 @@ gulp.task('build', function(cb) {
     cb);
 });
 
-gulp.task('watch', ['build'], function() {
+gulp.task('watch', function() {
   var reload = browserSync.reload;
-  gulp.watch('app/scss/**/*.scss', ['sass'], reload);
-  gulp.watch('app/*.html', reload);
-  gulp.watch('app/js/**/*.js', reload);
+  gulp.watch('app/scss/**/*.scss', ['sass'], ['useref'], reload);
+  gulp.watch('app/*.html', ['useref'], reload);
+  gulp.watch('app/js/**/*.js', ['useref'], reload);
 });
 
 gulp.task('serve', ['build'], function() {
-  browserSync.init({
+  browserSync.init(['dist/**/*'], {
     server: {
-      baseDir: 'app',
+      baseDir: 'dist',
     },
     ghostMode: { // Mirrors input across all devices
       clicks: false,
