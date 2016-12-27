@@ -7,7 +7,13 @@ $primary-text: #333333;
 
 @media (min-width: 1200px) {
   .container {
-    width: 970px;
+    width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 720px;
   }
 }
 
@@ -23,9 +29,29 @@ a {
 //
 
 .nav-bar {
+  position: fixed;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0px;
+  right: 0px;
   height: 90px;
+  max-width: 720px;
+  z-index: 99;
+
+  display: flex;
+  justify-content: space-between;
+
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 
   .nav-item {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+
     background: gray;
     border-radius: 50%;
     width: 30px;
@@ -38,10 +64,28 @@ a {
     height: 60px;
     margin-top: 15px;
   }
+
+  .nav-item-scrolled {
+    margin-top: 15px;
+  }
+
+  .profile-pic-scrolled {
+    width: 30px;
+    height: 30px;
+    margin-top: 15px;
+  }
+}
+
+.nav-bar-scrolled {
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  max-width: 400px;
 }
 
 .about {
-  margin-top: 45px;
+  margin-top: 145px;
   text-align: center;
   cursor: default;
 
@@ -63,3 +107,29 @@ a {
   }
 
 }
+
+.projects {
+  margin-top: 44px;
+
+  .project {
+    position: relative;
+    margin-bottom: 24px;
+    border-radius: 8px;
+    height: 120px;
+    background-color: red;
+
+    &:hover {
+      box-shadow: 1px;
+    }
+  }
+
+  .project-title {
+    position: absolute;
+    margin: 0px;
+    color: white;
+    left: 24px;
+    bottom: 12px;
+  }
+}
+
+
