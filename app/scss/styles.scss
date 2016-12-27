@@ -5,6 +5,10 @@ $primary-text: #333333;
 // overrides
 //
 
+body {
+  background-color: #f9f9f9;
+}
+
 @media (min-width: 1200px) {
   .container {
     width: 720px;
@@ -41,28 +45,54 @@ a {
   display: flex;
   justify-content: space-between;
 
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+  -webkit-transition: all 0.4s ease-out;
+  -moz-transition: all 0.4s ease-out;
+  -o-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;
 
   .nav-item {
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
+    -webkit-transition: all 0.4s ease-out;
+    -moz-transition: all 0.4s ease-out;
+    -o-transition: all 0.4s ease-out;
+    transition: all 0.4s ease-out;
 
-    background: gray;
-    border-radius: 50%;
     width: 30px;
     height: 30px;
-    margin-top: 30px;
+    margin-top: 45px;
+
+    background-size: 75% 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    opacity: 1.0;
+    cursor: pointer;
+
+    &:nth-child(1) {
+      background-image: url("../images/icon-linkedin.svg");
+      fill: gray;
+    }
+    &:nth-child(2) {
+      background-image: url("../images/icon-twitter.svg");
+    }
+    &:nth-child(4) {
+      background-image: url("../images/icon-dribbble.svg");
+    }
+    &:nth-child(5) {
+      background-image: url("../images/icon-medium.svg");
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
   }
 
   .profile-pic {
-    width: 60px;
-    height: 60px;
+    width: 90px;
+    height: 90px;
     margin-top: 15px;
+    border-radius: 50%;
+    background-image: url("../images/prof-pic-1.png");
+    background-size: 100% 100%;
   }
 
   .nav-item-scrolled {
@@ -77,14 +107,15 @@ a {
 }
 
 .nav-bar-scrolled {
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+  -webkit-transition: all 0.4s ease-out;
+  -moz-transition: all 0.4s ease-out;
+  -o-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;
   max-width: 400px;
 }
 
 .about {
+  font-size: 18px;
   margin-top: 145px;
   text-align: center;
   cursor: default;
