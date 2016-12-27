@@ -2,6 +2,11 @@
 
 $primary-text: #333333;
 
+$color-passenger: #09b73e;
+$color-startup-shell: #d74035;
+$color-slide: #2c2930;
+$color-make-school: #019cdb;
+
 // overrides
 //
 
@@ -69,7 +74,6 @@ a {
 
     &:nth-child(1) {
       background-image: url("../images/icon-linkedin.svg");
-      fill: gray;
     }
     &:nth-child(2) {
       background-image: url("../images/icon-twitter.svg");
@@ -111,7 +115,7 @@ a {
   -moz-transition: all 0.4s ease-out;
   -o-transition: all 0.4s ease-out;
   transition: all 0.4s ease-out;
-  max-width: 400px;
+  max-width: 300px;
 }
 
 .about {
@@ -122,19 +126,23 @@ a {
 
   .text-link {
     font-weight: bold;
+    text-decoration: none;
+    &:hover, &:active, &:visited {
+      text-decoration: none;
+    }
   }
 
   #startup-shell:hover {
-    color: red;
+    color: $color-startup-shell;
   }
   #passenger:hover {
-    color: green;
+    color: $color-passenger;
   }  
   #slide:hover {
-    color: gray;
+    color: $color-slide;
   }  
   #make-school:hover {
-    color: blue;
+    color: $color-make-school;
   }
 
 }

@@ -5859,8 +5859,7 @@ a {
     opacity: 1.0;
     cursor: pointer; }
     .nav-bar .nav-item:nth-child(1) {
-      background-image: url("../images/icon-linkedin.svg");
-      fill: gray; }
+      background-image: url("../images/icon-linkedin.svg"); }
     .nav-bar .nav-item:nth-child(2) {
       background-image: url("../images/icon-twitter.svg"); }
     .nav-bar .nav-item:nth-child(4) {
@@ -5888,7 +5887,7 @@ a {
   -moz-transition: all 0.4s ease-out;
   -o-transition: all 0.4s ease-out;
   transition: all 0.4s ease-out;
-  max-width: 400px; }
+  max-width: 300px; }
 
 .about {
   font-size: 18px;
@@ -5896,15 +5895,18 @@ a {
   text-align: center;
   cursor: default; }
   .about .text-link {
-    font-weight: bold; }
+    font-weight: bold;
+    text-decoration: none; }
+    .about .text-link:hover, .about .text-link:active, .about .text-link:visited {
+      text-decoration: none; }
   .about #startup-shell:hover {
-    color: red; }
+    color: #d74035; }
   .about #passenger:hover {
-    color: green; }
+    color: #09b73e; }
   .about #slide:hover {
-    color: gray; }
+    color: #2c2930; }
   .about #make-school:hover {
-    color: blue; }
+    color: #019cdb; }
 
 .projects {
   margin-top: 44px; }
