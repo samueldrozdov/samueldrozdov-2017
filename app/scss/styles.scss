@@ -7,6 +7,8 @@ $color-startup-shell: #d74035;
 $color-slide: #2c2930;
 $color-make-school: #019cdb;
 
+$card-shadow: 0px 6px 12px 3px rgba(0,0,0,0.1);
+
 // overrides
 //
 
@@ -69,6 +71,9 @@ a {
     background-repeat: no-repeat;
     background-position: center;
 
+    // change which attribute is animated independently
+    // transition: height 0.3s ease-out;
+
     opacity: 1.0;
     cursor: pointer;
 
@@ -97,6 +102,7 @@ a {
     border-radius: 50%;
     background-image: url("../images/prof-pic-1.png");
     background-size: 100% 100%;
+    position: relative;
   }
 
   .nav-item-scrolled {
@@ -118,9 +124,14 @@ a {
   max-width: 300px;
 }
 
+.name {
+  text-align: center;
+  margin-top: 120px;
+}
+
 .about {
   font-size: 18px;
-  margin-top: 145px;
+  margin-top: 17px;
   text-align: center;
   cursor: default;
 
@@ -155,14 +166,26 @@ a {
     margin-bottom: 24px;
     border-radius: 8px;
     height: 120px;
-    background-color: red;
+
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
 
     &:hover {
-      box-shadow: 1px;
+      cursor: pointer;
+      box-shadow: $card-shadow;
+    }
+
+    &:nth-child(1) {
+      background-image: url("../images/project-preview-passenger.png");
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
     }
   }
 
   .project-title {
+    display: none;
     position: absolute;
     margin: 0px;
     color: white;
