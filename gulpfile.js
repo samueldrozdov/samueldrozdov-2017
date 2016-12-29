@@ -50,8 +50,8 @@ gulp.task('clean', ['clean:dist']);
 
 gulp.task('build', function(cb) {
   console.log('Building files')
-  return runSequence('clean',
-    ['sass', 'useref', 'images', 'fonts'],
+  return runSequence('clean', 'sass',
+    ['useref', 'images', 'fonts'],
     cb);
 });
 
