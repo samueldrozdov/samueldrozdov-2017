@@ -5830,6 +5830,11 @@ a {
   a:hover {
     color: #333333; }
 
+.div-fill {
+  display: block;
+  height: 100%;
+  width: 100%; }
+
 .nav-bar {
   position: fixed;
   margin-left: auto;
@@ -5909,7 +5914,7 @@ a {
   .about #passenger:hover {
     color: #09b73e; }
   .about #slide:hover {
-    color: #2c2930; }
+    color: gray; }
   .about #make-school:hover {
     color: #019cdb; }
 
@@ -5918,23 +5923,20 @@ a {
   .projects .project {
     position: relative;
     margin-bottom: 24px;
-    border-radius: 8px;
-    height: 120px;
+    border-radius: 6px;
+    overflow: hidden;
+    width: 100%;
+    padding-bottom: 100%;
     -webkit-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
     -o-transition: all 0.4s ease;
     transition: all 0.4s ease; }
     .projects .project:hover {
       cursor: pointer;
-      box-shadow: 0px 6px 12px 3px rgba(0, 0, 0, 0.1); }
-    .projects .project:nth-child(1) {
-      background-image: url("../images/project-preview-passenger.png");
-      background-size: 100% 100%;
-      background-repeat: no-repeat; }
-  .projects .project-title {
-    display: none;
-    position: absolute;
-    margin: 0px;
-    color: white;
-    left: 24px;
-    bottom: 12px; }
+      box-shadow: 0px 6px 12px 3px rgba(0, 0, 0, 0.06); }
+  .projects #passenger {
+    background-image: url("../images/project-preview-passenger.png");
+    background-size: cover; }
+  .projects #startup-shell-web {
+    background-image: url("../images/project-preview-startup-shell-web.png");
+    background-size: cover; }

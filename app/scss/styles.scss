@@ -4,10 +4,10 @@ $primary-text: #333333;
 
 $color-passenger: #09b73e;
 $color-startup-shell: #d74035;
-$color-slide: #2c2930;
+$color-slide: gray; // #2c2930;
 $color-make-school: #019cdb;
 
-$card-shadow: 0px 6px 12px 3px rgba(0,0,0,0.1);
+$card-shadow: 0px 6px 12px 3px rgba(0,0,0,0.06);
 
 // overrides
 //
@@ -34,6 +34,15 @@ a {
   &:hover {
     color: $primary-text;
   }
+}
+
+// 
+//
+
+.div-fill {
+  display: block;
+  height: 100%;
+  width: 100%;
 }
 
 //
@@ -164,8 +173,12 @@ a {
   .project {
     position: relative;
     margin-bottom: 24px;
-    border-radius: 8px;
-    height: 120px;
+    border-radius: 6px;
+    overflow: hidden; 
+
+    // Makes div a responsive square
+    width: 100%;
+    padding-bottom: 100%;
 
     -webkit-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
@@ -176,21 +189,15 @@ a {
       cursor: pointer;
       box-shadow: $card-shadow;
     }
-
-    &:nth-child(1) {
-      background-image: url("../images/project-preview-passenger.png");
-      background-size: 100% 100%;
-      background-repeat: no-repeat;
-    }
   }
-
-  .project-title {
-    display: none;
-    position: absolute;
-    margin: 0px;
-    color: white;
-    left: 24px;
-    bottom: 12px;
+      
+  #passenger {
+    background-image: url("../images/project-preview-passenger.png");
+    background-size: cover;
+  }
+  #startup-shell-web {
+    background-image: url("../images/project-preview-startup-shell-web.png");
+    background-size: cover;
   }
 }
 
