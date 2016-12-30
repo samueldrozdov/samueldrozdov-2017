@@ -5940,3 +5940,9 @@ a {
   .projects #startup-shell-web {
     background-image: url("../images/project-preview-startup-shell-web.png");
     background-size: cover; }
+  .projects #slide {
+    background-image: url("../images/project-preview-slide.png");
+    background-size: cover; }
+  .projects #bhg {
+    background-image: url("../images/project-preview-bhg.png");
+    background-size: cover; }
