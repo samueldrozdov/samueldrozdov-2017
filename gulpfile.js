@@ -4,22 +4,33 @@ var browserSync = require('browser-sync').create();
 var useref = require('gulp-useref');
 var uglify = require('gulp-uglify');
 var gulpIf = require('gulp-if');
+var sourcemaps = require('gulp-sourcemaps');
 var cssnano = require('gulp-cssnano');
+var autoprefixer = require('gulp-autoprefixer');
 var imagemin = require('gulp-imagemin');
 var del = require('del');
 var runSequence = require('run-sequence');
+var rename = require('gulp-rename');
 
 gulp.task('sass', function() {
-  return gulp.src('app/scss/**/*.scss')
-    .pipe(sass()) // Converts Sass to CSS with gulp-sass
-    .pipe(gulp.dest('app/css'))
+  return gulp.src('app/scss/**/styles.scss')
+    .pipe(rename({
+        suffix: '.min',
+    }))
+    .pipe(sourcemaps.init())
+      .pipe(sass({
+        outputStyle: 'compressed',
+      }))
+      .pipe(autoprefixer())
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('dist/css/'))
 });
 
 gulp.task('useref', function() {
   return gulp.src('app/*.html')
     .pipe(useref())
     .pipe(gulpIf('*.js', uglify())) // Minifies JS files
-    .pipe(gulpIf('*.css', cssnano())) // Minifies CSS files
+    // .pipe(gulpIf('*.css', cssnano())) // Minifies CSS files
     .pipe(gulp.dest('dist'))
 });
 
@@ -57,7 +68,7 @@ gulp.task('build', function(cb) {
 
 gulp.task('watch', function() {
   var reload = browserSync.reload;
-  gulp.watch('app/scss/**/*.scss', ['sass'], ['useref'], reload);
+  gulp.watch('app/scss/**/*.scss', ['sass'], reload);
   gulp.watch('app/*.html', ['useref'], reload);
   gulp.watch('app/js/**/*.js', ['useref'], reload);
 });
