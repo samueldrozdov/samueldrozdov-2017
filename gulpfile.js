@@ -1,7 +1,6 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var browserSync = require('browser-sync').create();
-var useref = require('gulp-useref');
 var uglify = require('gulp-uglify');
 var gulpIf = require('gulp-if');
 var sourcemaps = require('gulp-sourcemaps');
@@ -14,9 +13,7 @@ var rename = require('gulp-rename');
 
 gulp.task('sass', function() {
   return gulp.src('app/scss/**/styles.scss')
-    .pipe(rename({
-        suffix: '.min',
-    }))
+    .pipe(rename({suffix: '.min'}))
     .pipe(sourcemaps.init())
       .pipe(sass({
         outputStyle: 'compressed',
@@ -26,12 +23,18 @@ gulp.task('sass', function() {
     .pipe(gulp.dest('dist/css/'))
 });
 
-gulp.task('useref', function() {
+gulp.task('js', function() {
+  return gulp.src('app/js/**/*.js')
+    .pipe(gulpIf('main.js',rename({suffix: '.min'})))
+    .pipe(sourcemaps.init())
+      .pipe(uglify())
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('dist/js/'));
+});
+
+gulp.task('html', function() {
   return gulp.src('app/*.html')
-    .pipe(useref())
-    .pipe(gulpIf('*.js', uglify())) // Minifies JS files
-    // .pipe(gulpIf('*.css', cssnano())) // Minifies CSS files
-    .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest('dist/'))
 });
 
 gulp.task('images', function() {
@@ -39,12 +42,12 @@ gulp.task('images', function() {
     .pipe(imagemin({
       interlaced: false
     }))
-    .pipe(gulp.dest('dist/images'))
+    .pipe(gulp.dest('dist/images/'))
 });
 
 gulp.task('fonts', function() {
   return gulp.src('app/fonts/**/*')
-    .pipe(gulp.dest('dist/fonts'))
+    .pipe(gulp.dest('dist/fonts/'))
 });
 
 // Clean Tasks
@@ -62,15 +65,15 @@ gulp.task('clean', ['clean:dist']);
 gulp.task('build', function(cb) {
   console.log('Building files')
   return runSequence('clean', 'sass',
-    ['useref', 'images', 'fonts'],
+    ['html', 'js', 'images', 'fonts'],
     cb);
 });
 
 gulp.task('watch', function() {
   var reload = browserSync.reload;
   gulp.watch('app/scss/**/*.scss', ['sass'], reload);
-  gulp.watch('app/*.html', ['useref'], reload);
-  gulp.watch('app/js/**/*.js', ['useref'], reload);
+  gulp.watch('app/*.html', ['html'], reload);
+  gulp.watch('app/js/**/*.js', ['js'], reload);
 });
 
 gulp.task('serve', ['build'], function() {
