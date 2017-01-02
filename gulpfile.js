@@ -10,6 +10,10 @@ var imagemin = require('gulp-imagemin');
 var del = require('del');
 var runSequence = require('run-sequence');
 var rename = require('gulp-rename');
+var handlebars = require('gulp-compile-handlebars')
+var layouts = require('handlebars-layouts');
+
+handlebars.Handlebars.registerHelper(layouts(handlebars.Handlebars));
 
 gulp.task('sass', function() {
   return gulp.src('app/scss/**/styles.scss')
@@ -32,11 +36,6 @@ gulp.task('js', function() {
     .pipe(gulp.dest('dist/js/'));
 });
 
-gulp.task('html', function() {
-  return gulp.src('app/*.html')
-    .pipe(gulp.dest('dist/'))
-});
-
 gulp.task('images', function() {
   return gulp.src('app/images/**/**.+(png|jpg|gif|svg)')
     .pipe(imagemin({
@@ -48,6 +47,26 @@ gulp.task('images', function() {
 gulp.task('fonts', function() {
   return gulp.src('app/fonts/**/*')
     .pipe(gulp.dest('dist/fonts/'))
+});
+
+gulp.task('templates', function() {
+  var templateData = {}
+  var options = {
+    ignorePartials: true, //ignores the unknown footer2 partial in the handlebars template, defaults to false
+    batch: ['app/partials/'],
+    // helpers: {
+    //   capitals: function(str) {
+    //     return str.toUpperCase();
+    //   },
+    // },
+  };
+
+  return gulp.src('app/templates/**/*.hbs')
+    .pipe(handlebars(templateData, options))
+    .pipe(rename(function(path) {
+      path.extname = '.html';
+    }))
+    .pipe(gulp.dest('dist'));
 });
 
 // Clean Tasks
@@ -65,14 +84,14 @@ gulp.task('clean', ['clean:dist']);
 gulp.task('build', function(cb) {
   console.log('Building files')
   return runSequence('clean', 'sass',
-    ['html', 'js', 'images', 'fonts'],
+    ['js', 'images', 'fonts'], 'templates',
     cb);
 });
 
 gulp.task('watch', function() {
   var reload = browserSync.reload;
+  gulp.watch(['app/templates/**/*.hbs', 'app/partials/**/*.hbs'], ['templates'], reload);
   gulp.watch('app/scss/**/*.scss', ['sass'], reload);
-  gulp.watch('app/*.html', ['html'], reload);
   gulp.watch('app/js/**/*.js', ['js'], reload);
 });
 
