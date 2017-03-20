@@ -190,7 +190,19 @@ a {
       box-shadow: $card-shadow;
     }
   }
-      
+    
+  #flip-highlights {
+    background-image: url("../images/project-preview-flip-highlights.png");
+    background-size: cover;
+  }
+  #startup-shell-deck {
+    background-image: url("../images/project-preview-ss-deck.png");
+    background-size: cover;
+  }
+  #bhg {
+    background-image: url("../images/project-preview-bhg.png");
+    background-size: cover;
+  }  
   #passenger {
     background-image: url("../images/project-preview-passenger.png");
     background-size: cover;
