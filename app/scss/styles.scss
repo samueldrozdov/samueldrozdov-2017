@@ -169,8 +169,9 @@ a {
 
 .projects {
   margin-top: 44px;
+  cursor: default;
 
-  .project {
+  .project-img {
     position: relative;
     margin-bottom: 24px;
     border-radius: 6px;
@@ -218,6 +219,58 @@ a {
   #bhg {
     background-image: url("../images/project-preview-bhg.png");
     background-size: cover;
+  }
+
+  .project-header {
+    h1 {
+      font-size: 24px;
+      line-height: 12px;
+    }
+
+    h2 {
+      font-size: 14px;
+      line-height: 0px;
+      color: red;
+    }
+   }
+
+  .project-tags {
+    h3 {
+      font-size: 14px;
+      display: inline-block;
+      background-color: #EDEDED;
+      color: #ACACAC;
+      padding: 4px 8px;
+      border-radius: 2px;
+      margin: 4px 0px;
+
+      &:hover {
+        color: black;
+      }
+    }
+  }
+
+  .project-description {
+    margin-top: 12px;
+
+    p {
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+
+  .project-cta {
+    margin-bottom: 44px;
+    p {
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .project-cta {
+    margin-bottom: 0px;
   }
 }
 
